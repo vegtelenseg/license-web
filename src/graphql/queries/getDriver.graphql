@@ -1,0 +1,10 @@
+query getDriver($id: ID!) {
+  user(id: $id) {
+    email
+    fines {
+      reason
+      amount
+      status
+    }
+  }
+}
