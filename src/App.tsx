@@ -1,14 +1,23 @@
 import "./App.css";
-// import { Home } from "./modules/Home";
-import { Login } from "./modules/Login";
+import "antd-mobile/dist/antd-mobile.css";
+import "antd/dist/antd.css";
+import { Profile } from "./containers/Profile/Profile";
+import { Home } from "./containers/Home";
+import PrivateRoute from "./containers/PrivateRoute";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Login } from "./containers/Login";
+import { LookUp } from "./containers/Lookup/Lookup";
 
 function App() {
   return (
-    <>
-      {/* <Home /> */}
-      <Login />
-      {/* <ProfileCard name='Siya' surname='Mzam' /> */}
-    </>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/auth/login' component={Login} />
+        <PrivateRoute path='/profile' component={Profile} exact />
+        <PrivateRoute path='/lookup' component={LookUp} exact />
+      </Switch>
+    </Router>
   );
 }
 

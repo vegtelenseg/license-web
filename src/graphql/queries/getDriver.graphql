@@ -1,10 +1,23 @@
-query getDriver($id: ID!) {
-  user(id: $id) {
+query getDriverByIdNumber($idNumber: String!) {
+  getDriverByIdNumber(idNumber: $idNumber) {
     email
+    firstName
+    lastName
+    dob
+    avatar
+    licenseNumber
+    pdpStatus {
+      status
+    }
+    licenseStatus {
+      status
+    }
     fines {
       reason
       amount
       status
+      created_at
+      dueDate
     }
   }
 }

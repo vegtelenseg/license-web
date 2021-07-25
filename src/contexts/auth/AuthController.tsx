@@ -67,6 +67,7 @@ export function AuthController({ children }: Props) {
         const { data } = await axios.post(
           `${process.env.REACT_APP_API_HOST}/auth/local`,
           {
+            // TODO: Remove hard coding
             identifier: "mzam.siya@gmail.com",
             password: "password",
           }
@@ -80,7 +81,7 @@ export function AuthController({ children }: Props) {
           };
           setAuth(auth);
           localStorage.setItem("auth", JSON.stringify(auth));
-          // TODO: history.push('/)
+          // TODO: history.p`ush('/)
           window.location.pathname = "/";
         }
       } catch (error) {

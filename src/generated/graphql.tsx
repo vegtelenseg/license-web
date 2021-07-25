@@ -34,16 +34,39 @@ export type AdminUser = {
   lastname: Scalars['String'];
 };
 
-
-
-export type Driver = {
-  __typename?: 'Driver';
+export type ComponentLicenseLicenseStatus = {
+  __typename?: 'ComponentLicenseLicenseStatus';
   id: Scalars['ID'];
-  username?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
-  role?: Maybe<Role>;
-  fines?: Maybe<Array<Maybe<Fine>>>;
+  licenseStatus?: Maybe<Enum_Componentlicenselicensestatus_Licensestatus>;
 };
+
+export type ComponentLicenseLicenseStatusInput = {
+  licenseStatus?: Maybe<Enum_Componentlicenselicensestatus_Licensestatus>;
+};
+
+export type ComponentLicensePdpStatus = {
+  __typename?: 'ComponentLicensePdpStatus';
+  id: Scalars['ID'];
+  pdpStatus?: Maybe<Enum_Componentlicensepdpstatus_Pdpstatus>;
+};
+
+export type ComponentLicensePdpStatusInput = {
+  pdpStatus?: Maybe<Enum_Componentlicensepdpstatus_Pdpstatus>;
+};
+
+
+
+export enum Enum_Componentlicenselicensestatus_Licensestatus {
+  Active = 'ACTIVE',
+  Suspended = 'SUSPENDED',
+  Terminated = 'TERMINATED'
+}
+
+export enum Enum_Componentlicensepdpstatus_Pdpstatus {
+  Active = 'ACTIVE',
+  Suspended = 'SUSPENDED',
+  Terminated = 'TERMINATED'
+}
 
 export enum Enum_Fines_Status {
   Paid = 'PAID',
@@ -75,17 +98,6 @@ export type FileInput = {
   related?: Maybe<Array<Maybe<Scalars['ID']>>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
-};
-
-export type Fine = {
-  __typename?: 'Fine';
-  id: Scalars['ID'];
-  reason: Scalars['String'];
-  amount: Scalars['Int'];
-  dueDate: Scalars['String'];
-  status: Scalars['String'];
-  officer?: Maybe<Officer>;
-  driver?: Maybe<Driver>;
 };
 
 export type FineInput = {
@@ -247,7 +259,7 @@ export type LocaleInput = {
 };
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Role | Officer | Fine | Driver | Fines | FinesConnection | FinesAggregator | FinesAggregatorSum | FinesAggregatorAvg | FinesAggregatorMin | FinesAggregatorMax | FinesGroupBy | FinesConnectionId | FinesConnectionCreated_At | FinesConnectionUpdated_At | FinesConnectionReason | FinesConnectionAmount | FinesConnectionDueDate | FinesConnectionOfficer | FinesConnectionDriver | FinesConnectionStatus | FinesConnectionPublished_At | CreateFinePayload | UpdateFinePayload | DeleteFinePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionIdNumber | UsersPermissionsUserConnectionAvatar | CreateUserPayload | UpdateUserPayload | DeleteUserPayload;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Fines | FinesConnection | FinesAggregator | FinesAggregatorSum | FinesAggregatorAvg | FinesAggregatorMin | FinesAggregatorMax | FinesGroupBy | FinesConnectionId | FinesConnectionCreated_At | FinesConnectionUpdated_At | FinesConnectionReason | FinesConnectionAmount | FinesConnectionDueDate | FinesConnectionOfficer | FinesConnectionDriver | FinesConnectionStatus | FinesConnectionPublished_At | CreateFinePayload | UpdateFinePayload | DeleteFinePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionIdNumber | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionDob | UsersPermissionsUserConnectionLicenseNumber | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentLicenseLicenseStatus | ComponentLicensePdpStatus;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -380,12 +392,6 @@ export type MutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
 };
 
-export type Officer = {
-  __typename?: 'Officer';
-  id: Scalars['ID'];
-  email?: Maybe<Scalars['String']>;
-};
-
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
@@ -406,7 +412,7 @@ export type Query = {
   users?: Maybe<Array<Maybe<UsersPermissionsUser>>>;
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   me?: Maybe<UsersPermissionsMe>;
-  getDriver?: Maybe<Driver>;
+  getDriverByIdNumber?: Maybe<UsersPermissionsUser>;
 };
 
 
@@ -496,15 +502,8 @@ export type QueryUsersConnectionArgs = {
 };
 
 
-export type QueryGetDriverArgs = {
-  id: Scalars['ID'];
-};
-
-export type Role = {
-  __typename?: 'Role';
-  id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-  type: Scalars['String'];
+export type QueryGetDriverByIdNumberArgs = {
+  idNumber: Scalars['String'];
 };
 
 export type RoleInput = {
@@ -730,6 +729,10 @@ export type UserInput = {
   idNumber?: Maybe<Scalars['String']>;
   fines?: Maybe<Array<Maybe<Scalars['ID']>>>;
   avatar?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  dob?: Maybe<Scalars['Date']>;
+  licenseNumber?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -870,6 +873,10 @@ export type UsersPermissionsUser = {
   role?: Maybe<UsersPermissionsRole>;
   idNumber?: Maybe<Scalars['String']>;
   avatar?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  dob?: Maybe<Scalars['Date']>;
+  licenseNumber?: Maybe<Scalars['String']>;
   fines?: Maybe<Array<Maybe<Fines>>>;
 };
 
@@ -918,8 +925,20 @@ export type UsersPermissionsUserConnectionCreated_At = {
   connection?: Maybe<UsersPermissionsUserConnection>;
 };
 
+export type UsersPermissionsUserConnectionDob = {
+  __typename?: 'UsersPermissionsUserConnectionDob';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<UsersPermissionsUserConnection>;
+};
+
 export type UsersPermissionsUserConnectionEmail = {
   __typename?: 'UsersPermissionsUserConnectionEmail';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<UsersPermissionsUserConnection>;
+};
+
+export type UsersPermissionsUserConnectionFirstName = {
+  __typename?: 'UsersPermissionsUserConnectionFirstName';
   key?: Maybe<Scalars['String']>;
   connection?: Maybe<UsersPermissionsUserConnection>;
 };
@@ -932,6 +951,18 @@ export type UsersPermissionsUserConnectionId = {
 
 export type UsersPermissionsUserConnectionIdNumber = {
   __typename?: 'UsersPermissionsUserConnectionIdNumber';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<UsersPermissionsUserConnection>;
+};
+
+export type UsersPermissionsUserConnectionLastName = {
+  __typename?: 'UsersPermissionsUserConnectionLastName';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<UsersPermissionsUserConnection>;
+};
+
+export type UsersPermissionsUserConnectionLicenseNumber = {
+  __typename?: 'UsersPermissionsUserConnectionLicenseNumber';
   key?: Maybe<Scalars['String']>;
   connection?: Maybe<UsersPermissionsUserConnection>;
 };
@@ -973,6 +1004,10 @@ export type UsersPermissionsUserGroupBy = {
   role?: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>;
   idNumber?: Maybe<Array<Maybe<UsersPermissionsUserConnectionIdNumber>>>;
   avatar?: Maybe<Array<Maybe<UsersPermissionsUserConnectionAvatar>>>;
+  firstName?: Maybe<Array<Maybe<UsersPermissionsUserConnectionFirstName>>>;
+  lastName?: Maybe<Array<Maybe<UsersPermissionsUserConnectionLastName>>>;
+  dob?: Maybe<Array<Maybe<UsersPermissionsUserConnectionDob>>>;
+  licenseNumber?: Maybe<Array<Maybe<UsersPermissionsUserConnectionLicenseNumber>>>;
 };
 
 export type CreateFineInput = {
@@ -1038,6 +1073,16 @@ export type DeleteUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type EditComponentLicenseLicenseStatusInput = {
+  id?: Maybe<Scalars['ID']>;
+  licenseStatus?: Maybe<Enum_Componentlicenselicensestatus_Licensestatus>;
+};
+
+export type EditComponentLicensePdpStatusInput = {
+  id?: Maybe<Scalars['ID']>;
+  pdpStatus?: Maybe<Enum_Componentlicensepdpstatus_Pdpstatus>;
+};
+
 export type EditFileInput = {
   name?: Maybe<Scalars['String']>;
   alternativeText?: Maybe<Scalars['String']>;
@@ -1100,6 +1145,10 @@ export type EditUserInput = {
   idNumber?: Maybe<Scalars['String']>;
   fines?: Maybe<Array<Maybe<Scalars['ID']>>>;
   avatar?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  dob?: Maybe<Scalars['Date']>;
+  licenseNumber?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -1134,61 +1183,68 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
-export type GetDriverQueryVariables = Exact<{
-  id: Scalars['ID'];
+export type GetDriverByIdNumberQueryVariables = Exact<{
+  idNumber: Scalars['String'];
 }>;
 
 
-export type GetDriverQuery = (
+export type GetDriverByIdNumberQuery = (
   { __typename?: 'Query' }
-  & { user?: Maybe<(
+  & { getDriverByIdNumber?: Maybe<(
     { __typename?: 'UsersPermissionsUser' }
-    & Pick<UsersPermissionsUser, 'email'>
+    & Pick<UsersPermissionsUser, 'email' | 'firstName' | 'lastName' | 'dob' | 'avatar' | 'licenseNumber'>
     & { fines?: Maybe<Array<Maybe<(
       { __typename?: 'Fines' }
-      & Pick<Fines, 'reason' | 'amount' | 'status'>
+      & Pick<Fines, 'reason' | 'amount' | 'status' | 'created_at' | 'dueDate'>
     )>>> }
   )> }
 );
 
 
-export const GetDriverDocument = gql`
-    query getDriver($id: ID!) {
-  user(id: $id) {
+export const GetDriverByIdNumberDocument = gql`
+    query getDriverByIdNumber($idNumber: String!) {
+  getDriverByIdNumber(idNumber: $idNumber) {
     email
+    firstName
+    lastName
+    dob
+    avatar
+    licenseNumber
     fines {
       reason
       amount
       status
+      created_at
+      dueDate
     }
   }
 }
     `;
 
 /**
- * __useGetDriverQuery__
+ * __useGetDriverByIdNumberQuery__
  *
- * To run a query within a React component, call `useGetDriverQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetDriverQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetDriverByIdNumberQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDriverByIdNumberQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetDriverQuery({
+ * const { data, loading, error } = useGetDriverByIdNumberQuery({
  *   variables: {
- *      id: // value for 'id'
+ *      idNumber: // value for 'idNumber'
  *   },
  * });
  */
-export function useGetDriverQuery(baseOptions: Apollo.QueryHookOptions<GetDriverQuery, GetDriverQueryVariables>) {
+export function useGetDriverByIdNumberQuery(baseOptions: Apollo.QueryHookOptions<GetDriverByIdNumberQuery, GetDriverByIdNumberQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetDriverQuery, GetDriverQueryVariables>(GetDriverDocument, options);
+        return Apollo.useQuery<GetDriverByIdNumberQuery, GetDriverByIdNumberQueryVariables>(GetDriverByIdNumberDocument, options);
       }
-export function useGetDriverLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDriverQuery, GetDriverQueryVariables>) {
+export function useGetDriverByIdNumberLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetDriverByIdNumberQuery, GetDriverByIdNumberQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetDriverQuery, GetDriverQueryVariables>(GetDriverDocument, options);
+          return Apollo.useLazyQuery<GetDriverByIdNumberQuery, GetDriverByIdNumberQueryVariables>(GetDriverByIdNumberDocument, options);
         }
-export type GetDriverQueryHookResult = ReturnType<typeof useGetDriverQuery>;
-export type GetDriverLazyQueryHookResult = ReturnType<typeof useGetDriverLazyQuery>;
-export type GetDriverQueryResult = Apollo.QueryResult<GetDriverQuery, GetDriverQueryVariables>;
+export type GetDriverByIdNumberQueryHookResult = ReturnType<typeof useGetDriverByIdNumberQuery>;
+export type GetDriverByIdNumberLazyQueryHookResult = ReturnType<typeof useGetDriverByIdNumberLazyQuery>;
+export type GetDriverByIdNumberQueryResult = Apollo.QueryResult<GetDriverByIdNumberQuery, GetDriverByIdNumberQueryVariables>;

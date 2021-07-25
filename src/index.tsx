@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 
 import "./index.css";
-import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
-import "antd-mobile/dist/antd-mobile.css";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
