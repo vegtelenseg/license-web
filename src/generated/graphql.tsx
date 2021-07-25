@@ -37,32 +37,32 @@ export type AdminUser = {
 export type ComponentLicenseLicenseStatus = {
   __typename?: 'ComponentLicenseLicenseStatus';
   id: Scalars['ID'];
-  licenseStatus?: Maybe<Enum_Componentlicenselicensestatus_Licensestatus>;
+  status?: Maybe<Enum_Componentlicenselicensestatus_Status>;
 };
 
 export type ComponentLicenseLicenseStatusInput = {
-  licenseStatus?: Maybe<Enum_Componentlicenselicensestatus_Licensestatus>;
+  status?: Maybe<Enum_Componentlicenselicensestatus_Status>;
 };
 
 export type ComponentLicensePdpStatus = {
   __typename?: 'ComponentLicensePdpStatus';
   id: Scalars['ID'];
-  pdpStatus?: Maybe<Enum_Componentlicensepdpstatus_Pdpstatus>;
+  status?: Maybe<Enum_Componentlicensepdpstatus_Status>;
 };
 
 export type ComponentLicensePdpStatusInput = {
-  pdpStatus?: Maybe<Enum_Componentlicensepdpstatus_Pdpstatus>;
+  status?: Maybe<Enum_Componentlicensepdpstatus_Status>;
 };
 
 
 
-export enum Enum_Componentlicenselicensestatus_Licensestatus {
+export enum Enum_Componentlicenselicensestatus_Status {
   Active = 'ACTIVE',
   Suspended = 'SUSPENDED',
   Terminated = 'TERMINATED'
 }
 
-export enum Enum_Componentlicensepdpstatus_Pdpstatus {
+export enum Enum_Componentlicensepdpstatus_Status {
   Active = 'ACTIVE',
   Suspended = 'SUSPENDED',
   Terminated = 'TERMINATED'
@@ -259,7 +259,7 @@ export type LocaleInput = {
 };
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Fines | FinesConnection | FinesAggregator | FinesAggregatorSum | FinesAggregatorAvg | FinesAggregatorMin | FinesAggregatorMax | FinesGroupBy | FinesConnectionId | FinesConnectionCreated_At | FinesConnectionUpdated_At | FinesConnectionReason | FinesConnectionAmount | FinesConnectionDueDate | FinesConnectionOfficer | FinesConnectionDriver | FinesConnectionStatus | FinesConnectionPublished_At | CreateFinePayload | UpdateFinePayload | DeleteFinePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionIdNumber | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionDob | UsersPermissionsUserConnectionLicenseNumber | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentLicenseLicenseStatus | ComponentLicensePdpStatus;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Fines | FinesConnection | FinesAggregator | FinesAggregatorSum | FinesAggregatorAvg | FinesAggregatorMin | FinesAggregatorMax | FinesGroupBy | FinesConnectionId | FinesConnectionCreated_At | FinesConnectionUpdated_At | FinesConnectionReason | FinesConnectionAmount | FinesConnectionDueDate | FinesConnectionOfficer | FinesConnectionDriver | FinesConnectionStatus | FinesConnectionPublished_At | CreateFinePayload | UpdateFinePayload | DeleteFinePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionIdNumber | UsersPermissionsUserConnectionAvatar | UsersPermissionsUserConnectionFirstName | UsersPermissionsUserConnectionLastName | UsersPermissionsUserConnectionDob | UsersPermissionsUserConnectionLicenseNumber | UsersPermissionsUserConnectionLicenseStatus | UsersPermissionsUserConnectionPdpStatus | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentLicenseLicenseStatus | ComponentLicensePdpStatus;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -733,6 +733,8 @@ export type UserInput = {
   lastName?: Maybe<Scalars['String']>;
   dob?: Maybe<Scalars['Date']>;
   licenseNumber?: Maybe<Scalars['String']>;
+  licenseStatus?: Maybe<ComponentLicenseLicenseStatusInput>;
+  pdpStatus?: Maybe<ComponentLicensePdpStatusInput>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -877,6 +879,8 @@ export type UsersPermissionsUser = {
   lastName?: Maybe<Scalars['String']>;
   dob?: Maybe<Scalars['Date']>;
   licenseNumber?: Maybe<Scalars['String']>;
+  licenseStatus?: Maybe<ComponentLicenseLicenseStatus>;
+  pdpStatus?: Maybe<ComponentLicensePdpStatus>;
   fines?: Maybe<Array<Maybe<Fines>>>;
 };
 
@@ -967,6 +971,18 @@ export type UsersPermissionsUserConnectionLicenseNumber = {
   connection?: Maybe<UsersPermissionsUserConnection>;
 };
 
+export type UsersPermissionsUserConnectionLicenseStatus = {
+  __typename?: 'UsersPermissionsUserConnectionLicenseStatus';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<UsersPermissionsUserConnection>;
+};
+
+export type UsersPermissionsUserConnectionPdpStatus = {
+  __typename?: 'UsersPermissionsUserConnectionPdpStatus';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<UsersPermissionsUserConnection>;
+};
+
 export type UsersPermissionsUserConnectionProvider = {
   __typename?: 'UsersPermissionsUserConnectionProvider';
   key?: Maybe<Scalars['String']>;
@@ -1008,6 +1024,8 @@ export type UsersPermissionsUserGroupBy = {
   lastName?: Maybe<Array<Maybe<UsersPermissionsUserConnectionLastName>>>;
   dob?: Maybe<Array<Maybe<UsersPermissionsUserConnectionDob>>>;
   licenseNumber?: Maybe<Array<Maybe<UsersPermissionsUserConnectionLicenseNumber>>>;
+  licenseStatus?: Maybe<Array<Maybe<UsersPermissionsUserConnectionLicenseStatus>>>;
+  pdpStatus?: Maybe<Array<Maybe<UsersPermissionsUserConnectionPdpStatus>>>;
 };
 
 export type CreateFineInput = {
@@ -1075,12 +1093,12 @@ export type DeleteUserPayload = {
 
 export type EditComponentLicenseLicenseStatusInput = {
   id?: Maybe<Scalars['ID']>;
-  licenseStatus?: Maybe<Enum_Componentlicenselicensestatus_Licensestatus>;
+  status?: Maybe<Enum_Componentlicenselicensestatus_Status>;
 };
 
 export type EditComponentLicensePdpStatusInput = {
   id?: Maybe<Scalars['ID']>;
-  pdpStatus?: Maybe<Enum_Componentlicensepdpstatus_Pdpstatus>;
+  status?: Maybe<Enum_Componentlicensepdpstatus_Status>;
 };
 
 export type EditFileInput = {
@@ -1149,6 +1167,8 @@ export type EditUserInput = {
   lastName?: Maybe<Scalars['String']>;
   dob?: Maybe<Scalars['Date']>;
   licenseNumber?: Maybe<Scalars['String']>;
+  licenseStatus?: Maybe<EditComponentLicenseLicenseStatusInput>;
+  pdpStatus?: Maybe<EditComponentLicensePdpStatusInput>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -1193,7 +1213,13 @@ export type GetDriverByIdNumberQuery = (
   & { getDriverByIdNumber?: Maybe<(
     { __typename?: 'UsersPermissionsUser' }
     & Pick<UsersPermissionsUser, 'email' | 'firstName' | 'lastName' | 'dob' | 'avatar' | 'licenseNumber'>
-    & { fines?: Maybe<Array<Maybe<(
+    & { pdpStatus?: Maybe<(
+      { __typename?: 'ComponentLicensePdpStatus' }
+      & Pick<ComponentLicensePdpStatus, 'status'>
+    )>, licenseStatus?: Maybe<(
+      { __typename?: 'ComponentLicenseLicenseStatus' }
+      & Pick<ComponentLicenseLicenseStatus, 'status'>
+    )>, fines?: Maybe<Array<Maybe<(
       { __typename?: 'Fines' }
       & Pick<Fines, 'reason' | 'amount' | 'status' | 'created_at' | 'dueDate'>
     )>>> }
@@ -1210,6 +1236,12 @@ export const GetDriverByIdNumberDocument = gql`
     dob
     avatar
     licenseNumber
+    pdpStatus {
+      status
+    }
+    licenseStatus {
+      status
+    }
     fines {
       reason
       amount

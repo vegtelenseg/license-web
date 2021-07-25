@@ -12,6 +12,8 @@ export const Profile = ({ data }: { data: GetDriverByIdNumberQuery }) => {
       { title: <Badge text={user?.fines?.length}>Fines</Badge> },
       { title: <Badge>Violations</Badge> },
     ];
+    const licenseStatus = user?.licenseStatus?.status;
+    const pdpStatus = user?.pdpStatus?.status;
     return (
       <div
         style={{
@@ -65,6 +67,29 @@ export const Profile = ({ data }: { data: GetDriverByIdNumberQuery }) => {
               title='License number'
               extra={<span>{user?.licenseNumber}</span>}
             />
+            <Card.Header
+              title='License status'
+              extra={
+                <Button
+                  type={licenseStatus === "ACTIVE" ? "primary" : "ghost"}
+                  danger={licenseStatus !== "ACTIVE"}
+                >
+                  {user?.licenseStatus?.status}
+                </Button>
+              }
+            />
+            <Card.Header
+              title='PDP status'
+              extra={
+                <Button
+                  type={pdpStatus === "ACTIVE" ? "primary" : "ghost"}
+                  danger={pdpStatus !== "ACTIVE"}
+                >
+                  {user?.pdpStatus?.status}
+                </Button>
+              }
+            />
+
             <Card.Header title='Email' extra={user?.email} />
           </Card>
           {user?.fines?.map((fine, idx) => (

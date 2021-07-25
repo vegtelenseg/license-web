@@ -2,7 +2,6 @@ import "./App.css";
 import "antd-mobile/dist/antd-mobile.css";
 import "antd/dist/antd.css";
 import { Profile } from "./containers/Profile/Profile";
-import { Home } from "./containers/Home";
 import PrivateRoute from "./containers/PrivateRoute";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Login } from "./containers/Login";
@@ -12,8 +11,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/auth/login' component={Login} />
+        <Route exact path={["/", "/auth/login"]} component={Login} />
         <PrivateRoute path='/profile' component={Profile} exact />
         <PrivateRoute path='/lookup' component={LookUp} exact />
       </Switch>
