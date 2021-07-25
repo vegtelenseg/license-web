@@ -1,0 +1,11 @@
+mutation createDriverFine($input: createFineInput!) {
+  createDriverFine(input: $input) {
+    amount
+    driver {
+      firstName
+    }
+    officer {
+      firstName
+    }
+  }
+}

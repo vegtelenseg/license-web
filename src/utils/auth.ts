@@ -1,6 +1,13 @@
 import { isEmpty } from "lodash";
 
-const TOKEN_KEY = "jwtToken";
+interface AuthProps {
+  email: string;
+  id: string;
+  accessToken: string;
+  username: string;
+}
+
+const TOKEN_KEY = "auth";
 const USER_INFO = "userInfo";
 
 const parse = JSON.parse;
@@ -50,8 +57,10 @@ const auth = {
    * @return {String|Object}     Data from the storage
    */
   get(key: string) {
+    const item = localStorage.getItem(key);
+    console.log({ key });
     if (localStorage && localStorage.getItem(key)) {
-      return parse(localStorage.getItem(key) ?? "") || null;
+      return parse(item ?? "") || null;
     }
 
     if (sessionStorage && sessionStorage.getItem(key)) {
@@ -62,7 +71,8 @@ const auth = {
   },
 
   getToken(tokenKey = TOKEN_KEY) {
-    return auth.get(tokenKey);
+    const token = auth.get(tokenKey);
+    return token;
   },
 
   getUserInfo(userInfo = USER_INFO) {
@@ -75,7 +85,7 @@ const auth = {
    * @param {String}  key
    * @param {Boolean} isLocalStorage  Defines if we need to store in localStorage or sessionStorage
    */
-  set(value: any, key: string, isLocalStorage: boolean) {
+  set(value: AuthProps, key: string, isLocalStorage: boolean) {
     if (isEmpty(value)) {
       return null;
     }
@@ -91,11 +101,11 @@ const auth = {
     return null;
   },
 
-  setToken(value = "", isLocalStorage = false, tokenKey = TOKEN_KEY) {
+  setToken(value: AuthProps, isLocalStorage = false, tokenKey = TOKEN_KEY) {
     return auth.set(value, tokenKey, isLocalStorage);
   },
 
-  setUserInfo(value = "", isLocalStorage = false, userInfo = USER_INFO) {
+  setUserInfo(value: AuthProps, isLocalStorage = false, userInfo = USER_INFO) {
     return auth.set(value, userInfo, isLocalStorage);
   },
 };

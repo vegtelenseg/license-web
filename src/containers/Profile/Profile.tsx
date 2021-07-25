@@ -3,6 +3,7 @@ import { Avatar, Button } from "antd";
 import { GetDriverByIdNumberQuery } from "../../generated/graphql";
 import avatar from "../../assets/images/avatar.jpeg";
 import "./profile.css";
+import { FineForm } from "../../components/Forms/FineForm";
 
 export const Profile = ({ data }: { data: GetDriverByIdNumberQuery }) => {
   if (data && data.getDriverByIdNumber) {
@@ -92,41 +93,57 @@ export const Profile = ({ data }: { data: GetDriverByIdNumberQuery }) => {
 
             <Card.Header title='Email' extra={user?.email} />
           </Card>
-          {user?.fines?.map((fine, idx) => (
-            <>
-              <Card
-                full
-                key={fine?.reason ?? idx}
-                style={{
-                  width: "calc(100% - 30px)",
-                  margin: "0 auto",
-                  border: "1px solid #108ee9",
-                  marginBottom: "1rem",
-                  marginTop: "1rem",
-                }}
-              >
-                <Card.Header title='Reason' extra={fine?.reason} />
-                <Card.Header title='Amount' extra={`R ${fine?.amount}`} />
-                <Card.Header
-                  title='Date Issued'
-                  extra={new Date(fine?.created_at).toLocaleDateString()}
-                />
-                <Card.Header title='Date Due' extra={fine?.dueDate} />
-                <Card.Header
-                  title='Status'
-                  extra={
-                    <Button
-                      type={fine?.status === "UNPAID" ? "ghost" : "primary"}
-                      size='small'
-                      danger={fine?.status === "UNPAID"}
-                    >
-                      {fine?.status}
-                    </Button>
-                  }
-                />
-              </Card>
-            </>
-          ))}
+          <>
+            {/* <Button
+              type='primary'
+              size='large'
+              style={{
+                width: "calc(100% - 30px)",
+                margin: "0 auto",
+                marginTop: "1rem",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              Add Fine
+            </Button> */}
+            <FineForm />
+            {user?.fines?.map((fine, idx) => (
+              <>
+                <Card
+                  full
+                  key={fine?.reason ?? idx}
+                  style={{
+                    width: "calc(100% - 30px)",
+                    margin: "0 auto",
+                    border: "1px solid #108ee9",
+                    marginBottom: "1rem",
+                    marginTop: "1rem",
+                  }}
+                >
+                  <Card.Header title='Reason' extra={fine?.reason} />
+                  <Card.Header title='Amount' extra={`R ${fine?.amount}`} />
+                  <Card.Header
+                    title='Date Issued'
+                    extra={new Date(fine?.created_at).toLocaleDateString()}
+                  />
+                  <Card.Header title='Date Due' extra={fine?.dueDate} />
+                  <Card.Header
+                    title='Status'
+                    extra={
+                      <Button
+                        type={fine?.status === "UNPAID" ? "ghost" : "primary"}
+                        size='small'
+                        danger={fine?.status === "UNPAID"}
+                      >
+                        {fine?.status}
+                      </Button>
+                    }
+                  />
+                </Card>
+              </>
+            ))}
+          </>
           <div
             style={{
               display: "flex",

@@ -288,6 +288,7 @@ export type Mutation = {
   forgotPassword?: Maybe<UserPermissionsPasswordPayload>;
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
+  createDriverFine?: Maybe<Fines>;
 };
 
 
@@ -390,6 +391,11 @@ export type MutationResetPasswordArgs = {
 
 export type MutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
+};
+
+
+export type MutationCreateDriverFineArgs = {
+  input: CreateFineInput;
 };
 
 export enum PublicationState {
@@ -1203,6 +1209,26 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type CreateDriverFineMutationVariables = Exact<{
+  input: CreateFineInput;
+}>;
+
+
+export type CreateDriverFineMutation = (
+  { __typename?: 'Mutation' }
+  & { createDriverFine?: Maybe<(
+    { __typename?: 'Fines' }
+    & Pick<Fines, 'amount'>
+    & { driver?: Maybe<(
+      { __typename?: 'UsersPermissionsUser' }
+      & Pick<UsersPermissionsUser, 'firstName'>
+    )>, officer?: Maybe<(
+      { __typename?: 'UsersPermissionsUser' }
+      & Pick<UsersPermissionsUser, 'firstName'>
+    )> }
+  )> }
+);
+
 export type GetDriverByIdNumberQueryVariables = Exact<{
   idNumber: Scalars['String'];
 }>;
@@ -1227,6 +1253,45 @@ export type GetDriverByIdNumberQuery = (
 );
 
 
+export const CreateDriverFineDocument = gql`
+    mutation createDriverFine($input: createFineInput!) {
+  createDriverFine(input: $input) {
+    amount
+    driver {
+      firstName
+    }
+    officer {
+      firstName
+    }
+  }
+}
+    `;
+export type CreateDriverFineMutationFn = Apollo.MutationFunction<CreateDriverFineMutation, CreateDriverFineMutationVariables>;
+
+/**
+ * __useCreateDriverFineMutation__
+ *
+ * To run a mutation, you first call `useCreateDriverFineMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateDriverFineMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createDriverFineMutation, { data, loading, error }] = useCreateDriverFineMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateDriverFineMutation(baseOptions?: Apollo.MutationHookOptions<CreateDriverFineMutation, CreateDriverFineMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateDriverFineMutation, CreateDriverFineMutationVariables>(CreateDriverFineDocument, options);
+      }
+export type CreateDriverFineMutationHookResult = ReturnType<typeof useCreateDriverFineMutation>;
+export type CreateDriverFineMutationResult = Apollo.MutationResult<CreateDriverFineMutation>;
+export type CreateDriverFineMutationOptions = Apollo.BaseMutationOptions<CreateDriverFineMutation, CreateDriverFineMutationVariables>;
 export const GetDriverByIdNumberDocument = gql`
     query getDriverByIdNumber($idNumber: String!) {
   getDriverByIdNumber(idNumber: $idNumber) {
